@@ -1,25 +1,51 @@
-function isActive(data) {
-  return data.isActive;
+function isActive(isActive) {
+  return isActive;
 }
 
-function hasDiscount(data) {
-  return data.discount > 0;
+function hasDiscount(discount) {
+  return discount > 0;
 }
 
-function productPublished(data) {
-  return data.status === "published";
+function productPublished(status) {
+  return status === "published";
 }
 
-function priceNotZero(data) {
-  return data.price > 0;
+function productDraft(status) {
+  return status === "draft";
+}
+
+function productUnPublished(status) {
+  return status === "unpublished";
+}
+
+function priceNotZero(price) {
+  return price > 0;
 }
 
 function showData(data) {
   return (
-    isActive(data) &&
-    hasDiscount(data) &&
-    productPublished(data) &&
-    priceNotZero(data)
+    isActive(data.isActive) &&
+    hasDiscount(data.discount) &&
+    productPublished(data.status) &&
+    priceNotZero(data.price)
+  );
+}
+
+function showDataDraftProduct(data) {
+  return (
+    isActive(data.isActive) &&
+    hasDiscount(data.discount) &&
+    productDraft(data.status) &&
+    priceNotZero(data.price)
+  );
+}
+
+function showDataUnpublishedProduct(data) {
+  return (
+    isActive(data.isActive) &&
+    hasDiscount(data.discount) &&
+    productUnPublished(data.status) &&
+    priceNotZero(data.price)
   );
 }
 
@@ -30,11 +56,29 @@ function render(data) {
   return "";
 }
 
+function renderDraftProduct(data) {
+  if (showDataDraftProduct(data)) {
+    return data.name;
+  }
+  return "";
+}
+
+function renderUnpublishedProduct(data) {
+  if (showDataUnpublishedProduct(data)) {
+    return data.name;
+  }
+  return "";
+}
+
 module.exports = {
   isActive,
   hasDiscount,
   productPublished,
+  productDraft,
+  productUnPublished,
   priceNotZero,
   showData,
-  render
+  render,
+  renderDraftProduct,
+  renderUnpublishedProduct
 };
