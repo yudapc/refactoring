@@ -84,6 +84,11 @@ describe("#refactoring", () => {
       expect(operation.showData(data)).to.eql(false);
     });
   });
+  describe(".renderDefault", () => {
+    it("should return empty string", () => {
+      expect(operation.renderDefault()).to.eql("");
+    });
+  });
   describe(".render", () => {
     it("should return render name", () => {
       const data = { ...seed.product };

@@ -49,25 +49,29 @@ function showDataUnpublishedProduct(data) {
   );
 }
 
+function renderDefault() {
+  return "";
+}
+
 function render(data) {
   if (showData(data)) {
     return data.name;
   }
-  return "";
+  return renderDefault();
 }
 
 function renderDraftProduct(data) {
   if (showDataDraftProduct(data)) {
     return data.name;
   }
-  return "";
+  return renderDefault();
 }
 
 function renderUnpublishedProduct(data) {
   if (showDataUnpublishedProduct(data)) {
     return data.name;
   }
-  return "";
+  return renderDefault();
 }
 
 module.exports = {
@@ -78,6 +82,7 @@ module.exports = {
   productUnPublished,
   priceNotZero,
   showData,
+  renderDefault,
   render,
   renderDraftProduct,
   renderUnpublishedProduct
