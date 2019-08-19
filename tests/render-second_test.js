@@ -73,15 +73,39 @@ describe("#refactoring", () => {
       expect(operation.priceNotZero(data.price)).to.eql(false);
     });
   });
-  describe(".showData", () => {
-    it("should return showData true", () => {
+  describe(".showPublishedProduct", () => {
+    it("should return showPublishedProduct true", () => {
       const data = { ...seed.product };
-      expect(operation.showData(data)).to.eql(true);
+      expect(operation.showPublishedProduct(data)).to.eql(true);
     });
-    it("should return showData false", () => {
+    it("should return showPublishedProduct false", () => {
       const data = { ...seed.product };
       data.price = 0;
-      expect(operation.showData(data)).to.eql(false);
+      expect(operation.showPublishedProduct(data)).to.eql(false);
+    });
+  });
+  describe(".showDraftProduct", () => {
+    it("should return showDraftProduct true", () => {
+      const data = { ...seed.product };
+      data.status = "draft";
+      expect(operation.showDraftProduct(data)).to.eql(true);
+    });
+    it("should return showDraftProduct false", () => {
+      const data = { ...seed.product };
+      data.status = "published";
+      expect(operation.showDraftProduct(data)).to.eql(false);
+    });
+  });
+  describe(".showUnPublishedProduct", () => {
+    it("should return showUnPublishedProduct true", () => {
+      const data = { ...seed.product };
+      data.status = "unpublished";
+      expect(operation.showUnPublishedProduct(data)).to.eql(true);
+    });
+    it("should return showUnPublishedProduct false", () => {
+      const data = { ...seed.product };
+      data.status = "published";
+      expect(operation.showUnPublishedProduct(data)).to.eql(false);
     });
   });
   describe(".renderDefault", () => {

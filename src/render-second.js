@@ -22,7 +22,7 @@ function priceNotZero(price) {
   return price > 0;
 }
 
-function showData(data) {
+function showPublishedProduct(data) {
   return (
     isActive(data.isActive) &&
     hasDiscount(data.discount) &&
@@ -31,7 +31,7 @@ function showData(data) {
   );
 }
 
-function showDataDraftProduct(data) {
+function showDraftProduct(data) {
   return (
     isActive(data.isActive) &&
     hasDiscount(data.discount) &&
@@ -40,7 +40,7 @@ function showDataDraftProduct(data) {
   );
 }
 
-function showDataUnpublishedProduct(data) {
+function showUnPublishedProduct(data) {
   return (
     isActive(data.isActive) &&
     hasDiscount(data.discount) &&
@@ -54,21 +54,21 @@ function renderDefault() {
 }
 
 function render(data) {
-  if (showData(data)) {
+  if (showPublishedProduct(data)) {
     return data.name;
   }
   return renderDefault();
 }
 
 function renderDraftProduct(data) {
-  if (showDataDraftProduct(data)) {
+  if (showDraftProduct(data)) {
     return data.name;
   }
   return renderDefault();
 }
 
 function renderUnpublishedProduct(data) {
-  if (showDataUnpublishedProduct(data)) {
+  if (showUnPublishedProduct(data)) {
     return data.name;
   }
   return renderDefault();
@@ -81,7 +81,9 @@ module.exports = {
   productDraft,
   productUnPublished,
   priceNotZero,
-  showData,
+  showPublishedProduct,
+  showDraftProduct,
+  showUnPublishedProduct,
   renderDefault,
   render,
   renderDraftProduct,
